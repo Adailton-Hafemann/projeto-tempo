@@ -1,0 +1,78 @@
+body {
+  background-image: url("http://circuitomt.com.br/circuitomt01/2014/2016/Previs%C3%A3o%20do%20tempo/IMG_5043%20copy.jpg");
+  background-size: cover;
+  height:100%;
+}
+.card-weather-forecast {
+    background-repeat: no-repeat;
+    vertical-align:middle;
+    background-position: center;
+    background-size: contain;
+}
+
+.card-min-temperature,.card-max-temperature {
+  background-repeat: no-repeat;
+  vertical-align:middle;
+  background-position: center;
+  background-size: contain;
+  text-align: center;
+}
+
+.card-max {
+  padding-top: 10%;
+}
+
+.card-weather-forecastday {
+  background-repeat: no-repeat;
+  vertical-align:middle;
+  background-position: center;
+  background-size: contain;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 20px;
+}
+
+.favorites {
+  padding-top: 25px;
+}
+
+.card-text {
+  padding: 10px;
+}
+
+.navbar-default {
+  background-color: #ced7d7;
+  height: 70px;
+}
+
+.navbar-header > a > img {
+  height: 40px;
+  width: auto;
+}
+
+.body-project > div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.panel-default {
+  background-color: #ffffffb3;
+}
+
+.spinner-bar {
+    position: fixed;
+    z-index: 10051;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.16);
+}
+
+.spinner-bar > div{
+    top: 40%;
+    left: 50%;
+    width: 100px;
+    margin-left: -55px;
+    text-align: center;
+    position: fixed;
+}

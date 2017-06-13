@@ -1,0 +1,118 @@
+<div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Estados</label>
+            <select class="form-control" ng-model="vm.state" ng-options="item as vm.mountsStateString(item) for item in vm.listState track by item.id" ng-change="vm.mountsListCitiesInState(vm.state)"></select>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label>Cidades</label>
+            <input type="text" ng-model="vm.city" uib-typeahead="item as item.name for item in vm.listCityInState | filter:$viewValue | limitTo:10" typeahead-on-select="vm.selectCity($item)" class="form-control">
+          </div>
+        </div>
+        <div class="favorites">
+          <button class="btn btn-default" ng-click="vm.saveFavorites()"><i class="fa fa-star"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div ng-show="vm.messageError" class="alert alert-danger">
+      <label>Não foi possivel buscar as informaçõe do tempo.</label>
+    </div>
+  </div>
+  <div ng-show="vm.showTemperature">
+    <h2>{{vm.weatherForecast.location.name}}, {{vm.weatherForecast.location.region}}</h2>
+    <div class="panel panel-default color-form">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-2 card-weather-forecast" style="background-image: url({{vm.weatherForecast.current.condition.icon}})">
+            <h4>{{vm.isDay}}, {{vm.weatherForecast.current.condition.text}}</h4>
+            <div>
+              <label>{{vm.weatherForecast.current.temp_c}}&ordm;</label>
+            </div>
+            <div><small>Humidade: {{vm.weatherForecast.current.humidity}} %</small></div>
+            <div><small>Velocidade do vento: {{vm.weatherForecast.current.wind_kph}} Km/h</small></div>
+          </div>
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-2" ng-repeat="item in vm.weatherForecast.forecast.forecastday" ng-hide="vm.isCurrentDate(item.date)">
+                <div class="card-weather-forecastday" style="background-image: url({{item.day.condition.icon}})">
+                  <div>
+                    <label>{{vm.getDateOfWeek(item.date)}}</label>
+                  </div>
+                  <div>
+                    <label>{{vm.formatDate(item.date)}}</label>
+                  </div>
+                  <div>
+                    <h4 class="text-danger"><i class="fa fa-arrow-up"></i> {{item.day.maxtemp_c}}</h4>
+                  </div>
+                  <div>
+                    <h4 class="text-info"><i class="fa fa-arrow-down"></i> {{item.day.mintemp_c}}</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6">
+              <canvas id="bar" class="chart chart-bar" chart-data="vm.data" chart-labels="vm.labels" chart-colors="vm.colors" chart-series="vm.series"></canvas>
+            </div>
+            <div class="col-md-6">
+              <div class="row card-max">
+                <div class="col-md-6">
+                  <div class="card-max-temperature" style="background-image: url({{vm.minTemperature.icon}})">
+                    <div>
+                      <label>{{vm.getDateOfWeek(vm.maxTemperature.date)}}</label>
+                    </div>
+                    <div>
+                      <label>{{vm.formatDate(vm.maxTemperature.date)}}</label>
+                    </div>
+                    <div>
+                      <h4 class="text-danger"><i class="fa fa-arrow-up"></i> {{vm.maxTemperature.temperature}}</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card-min-temperature" style="background-image: url({{vm.minTemperature.icon}})">
+                    <div>
+                      <label>{{vm.getDateOfWeek(vm.minTemperature.date)}}</label>
+                    </div>
+                    <div>
+                      <label>{{vm.formatDate(vm.minTemperature.date)}}</label>
+                    </div>
+                    <div>
+                      <h4 class="text-info"><i class="fa fa-arrow-down"></i> {{vm.minTemperature.temperature}}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="card-text">
+              <label ng-show="isGoodWeatherForBeach(vm.weatherForecast.forecast.forecastday)">Este final de semana vai ser um bom dia para ir a praia.</label>
+              <label ng-hide="isGoodWeatherForBeach(vm.weatherForecast.forecast.forecastday)">Este final de semana vai ser muito frio pra ir a praia. Aproveite esse frio e fique em casa com sua familía.</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

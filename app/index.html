@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=8">
+  <meta http-equiv="X-UA-Compatible" content="IE=9">
+  <meta http-equiv="X-UA-Compatible" content="IE=10">
+  <meta http-equiv="X-UA-Compatible" content="IE=11">
+  <title>Previsão do tempo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+
+
+  <script src='assets/libs/jquery/dist/jquery.min.js'></script>
+  <script src='assets/libs/bootstrap/dist/js/bootstrap.min.js'></script>
+  <script src='assets/libs/angular/angular.js'></script>
+  <script src='assets/libs/angular-ui-router/release/angular-ui-router.min.js'></script>
+  <script src='assets/libs/angular-cookies/angular-cookies.min.js'></script>
+  <script src='assets/libs/angular-i18n/angular-locale_pt-br.js'></script>
+  <script src='assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js'></script>
+  <script src='assets/libs/chart.js/dist/Chart.min.js'></script>
+  <script src='assets/libs/angular-chart.js/dist/angular-chart.min.js'></script>
+  <script src='assets/libs/moment/moment.js'></script>
+  <script src='assets/libs/angular-moment/angular-moment.js'></script>
+
+  <!-- Importação dos controller-->
+  <script src="modules/home/service/homeService.js"></script>
+  <script src="modules/home/directive/teste.js"></script>
+  <script src="modules/home/controller/homeController.js"></script>
+  <script src="shared/directive/spinnerBarDirective.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="projeto.tempo">
+  <div id="spinner" spinner-bar class="spinner-bar">
+    <div>
+      <i class="fa fa-spinner fa-spin fa-5x"></i>
+    </div>
+  </div>
+  <div class="body-project">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="http://www.senior.com.br">
+            <img src="http://www.senior.com.br/wp-content/themes/senior-2016/images/logo.svg?v=2">
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div ui-view></div>
+  </div>
+</body>
+</html>
